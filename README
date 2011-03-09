@@ -1,0 +1,41 @@
+Federation Metadata Manager for Open SSO Fedlets (femmo) is a script that parses a 
+(Shibboleth) federation metadata XML content and creates a pool
+of metadata files a in order to configure Open SSO Fedlets.
+
+FEMMO works on Python 2.6+ and needs the lxml library.
+
+Installation
+------------
+FEMMO is intended to be used on any platform (Unix, windows) where python is installed.
+service is installed. These packages needs to be installed:
+- python2.6:
+  lxml library:
+  
+
+
+
+Documentation
+-------------
+This script is intended to automate membership configuration of an OpenSSO 
+(Oracle or OpenFM) Fedlet in a Shibboleth Federation. In fact Fedlets is not able to handle
+metadata with more than one EntityDescriptor element. A workaround to this
+limit is to download the metadata, split it for each member, create the
+associated idp.xml and idp-extended.xml files and add entry to 
+circle of trust file - fedlet.cot file.
+Script also generates json file if you want to use Embedded Discovery Service.
+
+
+First of all, customize the context-based variables at the beginning of femma.py:
+- idpEntityID: your identity provider entityID
+
+
+From a terminal prompt change directory to where you've unzipped Femaf and execute it.
+
+example:
+	c:\python25\python.exe femmo.py -m https://www.idem.garr.it/docs/conf/signed-metadata.xml
+     
+
+The script creates 1 directory with metadata files.
+
+Then you need to copy generated files into your fedlet home directory:
+
